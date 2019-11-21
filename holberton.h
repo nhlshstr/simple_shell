@@ -1,0 +1,16 @@
+#ifndef HOLBSHELL
+#define HOLBSHELL
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <signal.h>
+char *_strdup(char *str);
+char **_tokenize(char *str);
+typedef void (*sighandler_t)(int);
+int _putchar(char c);
+int _printR(char *str);
+#endif
