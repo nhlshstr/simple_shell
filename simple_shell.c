@@ -23,12 +23,14 @@ int main(int argc, char **argv, char **env)
 					printf("\n");
 					exit(EXIT_SUCCESS);
 			}
-			//if (check == -1)
-			//		break;
 			if (check == 1)
 					continue;
 			arr = _tokenize(src);
-			if (fork() == 0)
+			// move fork to function
+			
+			getDir(arr, **env);
+
+			/*if (fork() == 0)
 			{
 				execCheck =	execve(arr[0], arr, NULL);
 				if (execCheck == -1)
@@ -39,7 +41,7 @@ int main(int argc, char **argv, char **env)
 			}
 			else
 				wait(&status);
-		}
+		}*/
 
 		free(arr);
 		return (0);
@@ -81,6 +83,27 @@ char *newLine(char *src)
 		}
 	return (src);
 }
+/**
+ *
+ *
+ */
+char *getDirs(char **input, char **Env)
+{
+	:
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
