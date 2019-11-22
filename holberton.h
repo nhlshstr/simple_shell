@@ -10,7 +10,7 @@
 #include <signal.h>
 char *_strdup(char *str);
 char **_tokenize(char *str);
-typedef void (*sighandler_t)(int);
 int _putchar(char c);
 int _printR(char *str);
+char *newLine(char *src);
 #endif
