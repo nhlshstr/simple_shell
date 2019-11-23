@@ -15,5 +15,7 @@ int _printR(char *str);
 char *newLine(char *src);
 char *_strcat(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
-//int getDirs(char **input, char **Env);
+char *pathFind(char **Enviro);
+void getDirs(char **input, char **Env);
+int functionExecute(char **input);
 #endif

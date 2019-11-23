@@ -1,5 +1,4 @@
 #include "holberton.h"
-void getDirs(char **input, char **Env);
 /**
  *main - Driver function for UNIX interpreter
  *
@@ -11,10 +10,8 @@ int main(int argc, char **argv, char **env)
 		char *src = NULL;
 		char **arr = NULL;
 		size_t src_size = 0;
-		int check = 0;//, status;
+		int check = 0;
 		(void)argc;
-		//int att;
-		int a = 0;
 		(void)argv;
 		
 		while (check != -1)
@@ -31,27 +28,14 @@ int main(int argc, char **argv, char **env)
 			if (check == 1)
 					continue;
 			arr = _tokenize(src);
-			// move fork to function
 			
 			getDirs(arr, env);
-			printf("This is a: %d\n", a);
-
-			/*if (fork() == 0)
-			{
-				execCheck =	execve(arr[0], arr, NULL);
-				if (execCheck == -1)
-				{
-					printf("%s: No such file or directory\n", argv[0]);
-					exit(EXIT_FAILURE);
-				}
-			}
-			else
-				wait(&status);
-		}*/
-
-		free(arr);
-		return (0);
+			
+			free(arr);
+			
 		}
+
+	return (0);
 }
 /**
  *
@@ -96,41 +80,44 @@ char *newLine(char *src)
  */
 void getDirs(char **input, char **Env)
 {	
-	int checker = 0, status1;
-	/*, status2,*/ 
-	int compare, i;
-	char *tok, *_pathString;
+	char *pathopath;
 	if (access(input[0], X_OK) == 0)
 	{
-			if (fork() == 0)
-			{
-				checker = execve(input[0], input, NULL);
-				if (checker == -1)
-				{		_printR(input[0]);
-						write(STDERR_FILENO, ": No such file or direcotory\n", 28);
-						exit (EXIT_FAILURE);
-				}
-			}
+		if(functionExecute(input) != 0)
+			exit(EXIT_FAILURE);
+		
+	}
 
-			else
-			{
-				wait (&status1);
-			}
-	
-	}	
+	else
+	{
+
+	}
 }
 
+/**
+ *
+ *
+ *
+ */
+int functionExecute(char **input)
+{	
+	int status1;
+	int checker = 0;
+	if (fork() == 0)
+	{
+		checker = execve(input[0], input, NULL);
+			if (checker == -1)
+			{
+				_printR(input[0]);
+				write(STDERR_FILENO, ": No such file or direcotory\n", 28);
+				exit (EXIT_FAILURE);
+			}
+	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+	else
+	{
+		wait (&status1);
+	}
+	
+	return (0);
+}
