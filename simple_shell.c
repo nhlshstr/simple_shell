@@ -1,4 +1,5 @@
 #include "holberton.h"
+void getDirs(char **input, char **Env);
 /**
  *main - Driver function for UNIX interpreter
  *
@@ -7,14 +8,18 @@
  */
 int main(int argc, char **argv, char **env)
 {
-		char *src = NULL, **arr = NULL;
+		char *src = NULL;
+		char **arr = NULL;
 		size_t src_size = 0;
-		int check = 0, execCheck = 0, status;
+		int check = 0;//, status;
 		(void)argc;
-		(void)env;
+		//int att;
+		int a = 0;
+		(void)argv;
+		
 		while (check != -1)
-		{
-			if(isatty (STDIN_FILENO))
+		{	
+			if(isatty(STDIN_FILENO))
 				_printR("[(xshell$)] ");
 			check = getline(&src, &src_size, stdin);
 			src = newLine(src);
@@ -28,7 +33,8 @@ int main(int argc, char **argv, char **env)
 			arr = _tokenize(src);
 			// move fork to function
 			
-			getDir(arr, **env);
+			getDirs(arr, env);
+			printf("This is a: %d\n", a);
 
 			/*if (fork() == 0)
 			{
@@ -45,6 +51,7 @@ int main(int argc, char **argv, char **env)
 
 		free(arr);
 		return (0);
+		}
 }
 /**
  *
@@ -87,12 +94,31 @@ char *newLine(char *src)
  *
  *
  */
-char *getDirs(char **input, char **Env)
-{
-	:
+void getDirs(char **input, char **Env)
+{	
+	int checker = 0, status1;
+	/*, status2,*/ 
+	int compare, i;
+	char *tok, *_pathString;
+	if (access(input[0], X_OK) == 0)
+	{
+			if (fork() == 0)
+			{
+				checker = execve(input[0], input, NULL);
+				if (checker == -1)
+				{		_printR(input[0]);
+						write(STDERR_FILENO, ": No such file or direcotory\n", 28);
+						exit (EXIT_FAILURE);
+				}
+			}
+
+			else
+			{
+				wait (&status1);
+			}
+	
+	}	
 }
-
-
 
 
 
