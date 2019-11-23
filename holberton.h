@@ -18,4 +18,8 @@ int _strcmp(char *s1, char *s2);
 char *pathFind(char **Enviro);
 void getDirs(char **input, char **Env);
 int functionExecute(char **input);
+char *getPath(char **envi);
+char **tokenizePath(char *inPath);
+char **command_concat(char *string1, char **dblArr);
+int _strlen(char *s);
 #endif

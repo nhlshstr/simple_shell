@@ -36,24 +36,28 @@ char *_strdup(char *str)
 }
 
 /**
- * _strcat - main function for concatenation
- * @dest: destination file
- * @src: string to be appended
- * Return: dest
+ *_strcat - function to concatenate 2 strings
+ *
+ * @dest: string to be appended
+ * @src: string that is to be appended to
+ *
+ * Return: Returns the pointer to one of the strings passed
  */
 char *_strcat(char *dest, char *src)
-
 {
+	int i, j;
 
-	int a, b;
-
-	for (b = 0; dest[b] != '\0'; b++)
-		;
-	for (a = 0; src[a] != '\0'; a++, b++)
+	for (i = 0; dest[i] != '\0'; i++)
 	{
-		dest[b] = src[a];
+		;
 	}
-	src[a] = '\0';
+	for (j = 0; src[j] != '\0'; i++, j++)
+	{
+		dest[i] = src[j];
+	}
+
+	dest[i] = '\0';
+
 	return (dest);
 }
 
@@ -77,3 +81,23 @@ int _strcmp(char *s1, char *s2)
 		}
 	return (0);
 }
+/**
+ *_strlen - finds the length of a string
+ *
+ *@s: string of which the length is to be found
+ *
+ *Return: Returns an int which is the size of the string
+ */
+int _strlen(char *s)
+{
+	int length;
+
+	while (*s != '\0')
+	{
+		length++;
+		s++;
+	}
+
+	return (length);
+}
+

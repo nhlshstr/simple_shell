@@ -6,14 +6,15 @@
  *Return: Returns (0) if successful, otherwise accoridng error.
  */
 int main(int argc, char **argv, char **env)
-{
+{		
+		
 		char *src = NULL;
 		char **arr = NULL;
 		size_t src_size = 0;
 		int check = 0;
 		(void)argc;
 		(void)argv;
-		
+
 		while (check != -1)
 		{	
 			if(isatty(STDIN_FILENO))
@@ -38,8 +39,11 @@ int main(int argc, char **argv, char **env)
 	return (0);
 }
 /**
+ *_printR - prints the string passed to it
  *
+ * @str: String that is passed to print
  *
+ * Return: Number of strings written to stdout
  */
 int _printR(char *str)
 {
@@ -60,8 +64,11 @@ int _printR(char *str)
 	return (val);
 }
 /**
+ *newLine - converts encountered new line into NULL byte
  *
+ * @src: String that is passed
  *
+ * Return: String with null termination 
  */
 char *newLine(char *src)
 {	
@@ -75,12 +82,19 @@ char *newLine(char *src)
 	return (src);
 }
 /**
+ *getDirs - calls the right function from i/p command
  *
+ * @input: Double array of input string
+ * @Env: Double array of the environment 
  *
+ * Return: 
  */
 void getDirs(char **input, char **Env)
 {	
-	char *pathopath;
+	char *pathofpath;
+	char **tokenArr;
+	char **concatArg;
+	int j = 0;
 	if (access(input[0], X_OK) == 0)
 	{
 		if(functionExecute(input) != 0)
@@ -90,14 +104,35 @@ void getDirs(char **input, char **Env)
 
 	else
 	{
-
+		/*
+		 *1. GET path of PATH 
+		 *2. tokenize path recieved from string
+		 *3. concat command with tokens
+		 *4. check access with each token
+		 *5. if access checks out, functionExececute();
+		 */
+	pathofpath = getPath(Env);	
+	tokenArr = tokenizePath(pathofpath);//MUST FREE DOUBLE ARRAY RETURNED
+	printf("Tokens of path:\n");
+	for(j = 0; tokenArr[j]; j++)
+	{
+			printf("%d: %s\n", j + 1, tokenArr[j]);
+	}
+	
+	concatArg = command_concat(input[0], tokenArr);//MUST FREE DOUBLE ARRAY RETURNED
+	for (j = 0; concatArg[j]; j++)
+	{
+			printf("Concat Dir %d: %s\n", j + 1, concatArg[j]);
+	}
 	}
 }
 
 /**
+ *functionExecute - Executes the function called
  *
+ *@input: Pointer to pointers to input string
  *
- *
+ * Return: 0 on success, exits on failure
  */
 int functionExecute(char **input)
 {	
@@ -121,3 +156,107 @@ int functionExecute(char **input)
 	
 	return (0);
 }
+/**
+ *getPath - function to get the path of PATH
+ *
+ * @envi: Pointer to environment variables
+ *
+ *Return: Path of path on success (Always success as PATH always exists)
+ */
+char *getPath(char **envi)
+{
+		int i, compcheck = 0;
+		for (i = 0; envi[i] != NULL; i++)
+		{
+				compcheck = _strcmp("PATH", strtok(envi[i], "="));
+				if (compcheck == 0)
+				{
+						break;
+				}
+		}
+
+		return (strtok(NULL, "\0"));
+}
+/**
+ *
+ *
+ *
+ */
+char **tokenizePath(char *inPath)
+{
+	int i = 0, count;
+	char *token;
+	char **outArr;
+	char *copy_src = _strdup(inPath);
+	
+	token = strtok(copy_src, ":");
+	while (token != NULL)
+	{	
+		token = strtok(NULL, ":");
+		count++;
+	}
+
+	outArr = malloc(sizeof(char *) * (count + 1));
+	token = strtok(inPath, ":");
+	while(token != NULL)
+	{
+			outArr[i] = token;
+			token = strtok(NULL, ":");
+			i++;
+	}
+	
+	outArr[count] = NULL;
+	return (outArr);
+}
+/**
+ *
+ *
+ *
+ */
+char **command_concat(char *string1, char **dblArr)
+{
+	char **concatDArray;
+	int i = 0, count = 0, j = 0;
+	printf("FUCK: %s\n", string1);
+	for(i = 0; dblArr[i] != NULL; i++)
+	{	printf("THIS0 ==> %s\n", dblArr[i]);
+		count++;
+	}
+	
+	printf("This is the count in the fn: %d\n", count);
+	
+	concatDArray = malloc(sizeof(char *) * (count + 1));
+	
+	printf("Pre concat test\n\n");
+	
+	for(j = 0; dblArr[j] != NULL; j++)
+	{	
+		printf("dblArr ==>  %s\n", dblArr[j]);
+		concatDArray[j] = dblArr[j];
+		printf("concatDArray ==> %s\n", concatDArray[j]);
+		concatDArray[j] = _strcat(concatDArray[i], string1);
+		printf("Concatenating: %s\n", concatDArray[j]);
+	}
+	concatDArray[count] = NULL;
+	
+	return(concatDArray);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
