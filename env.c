@@ -1,5 +1,5 @@
 #include "holberton.h"
-int main(int argc, char **argv, char** envp)
+int _env(int argc, char **argv, char** envp)
 {
 	char* copy_env;
 	int i = 0;

@@ -28,4 +28,5 @@ char **argDup(char **ip, char *newArg);
 char **DArrDup(char **src);
 int functionExecute1(char **input, char **tokenized, char **concatedArgu, char **newestArg);
 int functionExecute(char **input);
+int _env(int argc, char **argv, char** envp);
 #endif
