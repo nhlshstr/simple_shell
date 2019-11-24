@@ -112,16 +112,13 @@ void getDirs(char **input, char **Env)
 		convertedInput = checkPerm(concatArg);
 		newArg = argDup(input, convertedInput);//MUST FREE DA RETURNED
 	
-		if(functionExecute(newArg) != 0)
+		if(functionExecute1(newArg, tokenArr, concatArg, newArg) != 0)
 		{
 			exit(EXIT_FAILURE);
 		}
 	}
 
 }
-
-
-
 /**
  *functionExecute - Executes the function called
  *
@@ -147,6 +144,36 @@ int functionExecute(char **input)
 	else
 	{
 		wait (&status1);
+	}
+	
+	return (0);
+}
+/**
+ *
+ *
+ */
+
+int functionExecute1(char **input, char **tokenized, char **concatedArgu, char **newestArg)
+{	
+	int status1;
+	int checker = 0;
+	if (fork() == 0)
+	{
+		checker = execve(input[0], input, NULL);
+			if (checker == -1)
+			{
+				_printR(input[0]);
+				write(STDERR_FILENO, ": No such file or direcotory\n", 28);
+				exit (EXIT_FAILURE);
+			}
+	}
+
+	else
+	{
+		wait (&status1);
+		free (tokenized);
+		free (concatedArgu);
+		free (newestArg);
 	}
 	
 	return (0);

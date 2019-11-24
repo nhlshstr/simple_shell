@@ -18,7 +18,6 @@ char *_strcat(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 char *pathFind(char **Enviro);
 void getDirs(char **input, char **Env);
-int functionExecute(char **input);
 char *getPath(char **envi);
 char **tokenizePath(char *inPath);
 char **command_concat(char *string1, char **dblArr);
@@ -27,5 +26,6 @@ char *inputConverter(char *inputStr);
 char *checkPerm(char **dirsWithSlash);
 char **argDup(char **ip, char *newArg);
 char **DArrDup(char **src);
-
+int functionExecute1(char **input, char **tokenized, char **concatedArgu, char **newestArg);
+int functionExecute(char **input);
 #endif
