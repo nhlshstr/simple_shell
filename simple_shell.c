@@ -10,6 +10,7 @@ int main(int argc, char **argv, char **env)
 		
 		char *src = NULL;
 		char **arr = NULL;
+		char **env66 = NULL;
 		size_t src_size = 0;
 		int check = 0;
 		(void)argc;
@@ -29,9 +30,9 @@ int main(int argc, char **argv, char **env)
 			if (check == 1)
 					continue;
 			arr = _tokenize(src);
-			
-			getDirs(arr, env);
-			
+			env66 = DArrDup(env);
+			getDirs(arr, env66);
+			free(env66);	
 			free(arr);
 			
 		}
@@ -105,25 +106,20 @@ void getDirs(char **input, char **Env)
 
 	else
 	{
-		/*
-		 *1. GET path of PATH 
-		 *2. tokenize path recieved from string
-		 *3. concat command with tokens
-		 *4. check access with each token
-		 *5. if access checks out, functionExececute();
-		 */
-	pathofpath = getPath(Env);	
-	tokenArr = tokenizePath(pathofpath);//MUST FREE DOUBLE ARRAY RETURNED
-	concatArg = command_concat(input[0], tokenArr);//MUST FREE DOUBLE ARRAY RETURNED
-	convertedInput = checkPerm(concatArg);
-	newArg = argDup(input, convertedInput);//MUST FREE DA RETURNED
-	if(functionExecute(newArg) != 0)
-	{
-		exit(EXIT_FAILURE);
-	}
-	}
+		pathofpath = getPath(Env);	
+		tokenArr = tokenizePath(pathofpath);//MUST FREE DOUBLE ARRAY RETURNED
+		concatArg = command_concat(input[0], tokenArr);//MUST FREE DOUBLE ARRAY RETURNED
+		convertedInput = checkPerm(concatArg);
+		newArg = argDup(input, convertedInput);//MUST FREE DA RETURNED
 	
+		if(functionExecute(newArg) != 0)
+		{
+			exit(EXIT_FAILURE);
+		}
+	}
+
 }
+
 
 
 /**
@@ -293,6 +289,28 @@ char **argDup(char **ip, char *newArg)
 	manipString[count] = NULL;
 
 	return (manipString);
+}
+/**
+ *
+ *
+ *
+ */
+char **DArrDup(char **src)
+{
+		int i, count = 0;
+		char **dest;
+		for (i = 0; src[i] != NULL; i++)
+		{
+			count++;
+		}
+		dest = malloc(sizeof(char *) * (count + 1));
+		for (i = 0; src[i] != NULL; i++)
+		{
+				dest[i] = _strdup(src[i]);
+		}
+		dest[count] = NULL;
+
+		return (dest);
 }
 
 

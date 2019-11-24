@@ -26,5 +26,6 @@ int _strlen(char *s);
 char *inputConverter(char *inputStr);
 char *checkPerm(char **dirsWithSlash);
 char **argDup(char **ip, char *newArg);
+char **DArrDup(char **src);
 
 #endif
