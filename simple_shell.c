@@ -92,9 +92,10 @@ char *newLine(char *src)
 void getDirs(char **input, char **Env)
 {	
 	char *pathofpath;
+	char *convertedInput;
 	char **tokenArr;
 	char **concatArg;
-	int j = 0;
+	char **newArg;
 	if (access(input[0], X_OK) == 0)
 	{
 		if(functionExecute(input) != 0)
@@ -113,19 +114,17 @@ void getDirs(char **input, char **Env)
 		 */
 	pathofpath = getPath(Env);	
 	tokenArr = tokenizePath(pathofpath);//MUST FREE DOUBLE ARRAY RETURNED
-	printf("Tokens of path:\n");
-	for(j = 0; tokenArr[j]; j++)
+	concatArg = command_concat(input[0], tokenArr);//MUST FREE DOUBLE ARRAY RETURNED
+	convertedInput = checkPerm(concatArg);
+	newArg = argDup(input, convertedInput);//MUST FREE DA RETURNED
+	if(functionExecute(newArg) != 0)
 	{
-			printf("%d: %s\n", j + 1, tokenArr[j]);
+		exit(EXIT_FAILURE);
+	}
 	}
 	
-	concatArg = command_concat(input[0], tokenArr);//MUST FREE DOUBLE ARRAY RETURNED
-	for (j = 0; concatArg[j]; j++)
-	{
-			printf("Concat Dir %d: %s\n", j + 1, concatArg[j]);
-	}
-	}
 }
+
 
 /**
  *functionExecute - Executes the function called
@@ -216,31 +215,86 @@ char **tokenizePath(char *inPath)
 char **command_concat(char *string1, char **dblArr)
 {
 	char **concatDArray;
+	char **slashPath;
+	char *temp;
+	char *temp2;
 	int i = 0, count = 0, j = 0;
-	printf("FUCK: %s\n", string1);
 	for(i = 0; dblArr[i] != NULL; i++)
-	{	printf("THIS0 ==> %s\n", dblArr[i]);
+	{	
 		count++;
 	}
-	
-	printf("This is the count in the fn: %d\n", count);
-	
+
+	slashPath = malloc(sizeof(char*) * (count + 1));
+	for (i = 0; dblArr[i] != NULL; i++)
+	{
+			temp2 = strdup(dblArr[i]);
+			slashPath[i] = _strcat(temp2, "/");
+	}
+
 	concatDArray = malloc(sizeof(char *) * (count + 1));
-	
-	printf("Pre concat test\n\n");
-	
 	for(j = 0; dblArr[j] != NULL; j++)
 	{	
-		printf("dblArr ==>  %s\n", dblArr[j]);
-		concatDArray[j] = dblArr[j];
-		printf("concatDArray ==> %s\n", concatDArray[j]);
-		concatDArray[j] = _strcat(concatDArray[i], string1);
-		printf("Concatenating: %s\n", concatDArray[j]);
+		temp = _strdup(slashPath[j]);
+		concatDArray[j] = _strcat(temp, string1);
+		
 	}
 	concatDArray[count] = NULL;
 	
 	return(concatDArray);
 }
+/**
+ *checkPerm - check's the existence of a file
+ *
+ *@dirsWithSlash: Pointers to strings of directory with appropriate slashes
+ *
+ * Return: Integer to indicate success or failure
+ */
+char *checkPerm(char **dirsWithSlash)
+{	
+	int i = 0;
+	struct stat *buf; 
+	buf = malloc (sizeof(struct stat));
+	while (dirsWithSlash[i] != NULL)
+	{
+			if(stat(dirsWithSlash[i], buf) == 0)
+			{
+				if (access(dirsWithSlash[i], X_OK) == 0)
+				{
+					return (dirsWithSlash[i]);
+			
+				}
+			}
+			i++;
+	}
+	return(dirsWithSlash[i]);
+}
+/**
+ *
+ *
+ *
+ */
+char **argDup(char **ip, char *newArg)
+{
+	char **manipString;
+	int i, count = 0; 
+	
+	for (i = 0; ip[i] != NULL; i++)
+	{
+			count++;
+	}
+
+	manipString = malloc(sizeof(char*) * (count + 1));
+	manipString[0] = newArg;
+	for (i = 1; ip[i] != NULL; i++)
+	{
+		manipString[i] = ip[i];
+	}
+
+	manipString[count] = NULL;
+
+	return (manipString);
+}
+
 
 
 

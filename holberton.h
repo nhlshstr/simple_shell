@@ -8,6 +8,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <signal.h>
+#include <sys/stat.h>
 char *_strdup(char *str);
 char **_tokenize(char *str);
 int _putchar(char c);
@@ -22,4 +23,8 @@ char *getPath(char **envi);
 char **tokenizePath(char *inPath);
 char **command_concat(char *string1, char **dblArr);
 int _strlen(char *s);
+char *inputConverter(char *inputStr);
+char *checkPerm(char **dirsWithSlash);
+char **argDup(char **ip, char *newArg);
+
 #endif
