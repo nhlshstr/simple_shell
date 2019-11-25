@@ -6,24 +6,24 @@
  */
 char **argDup(char **ip, char *newArg)
 {
-        char **manipString;
-        int i, count = 0;
+	char **manipString;
+	int i, count = 0;
 
-        for (i = 0; ip[i] != NULL; i++)
-        {
-                count++;
-        }
+	for (i = 0; ip[i] != NULL; i++)
+	{
+		count++;
+	}
 
-        manipString = malloc(sizeof(char*) * (count + 1));
-        manipString[0] = newArg;
-        for (i = 1; ip[i] != NULL; i++)
-        {
-                manipString[i] = ip[i];
-        }
+	manipString = malloc(sizeof(char *) * (count + 1));
+	manipString[0] = newArg;
+	for (i = 1; ip[i] != NULL; i++)
+	{
+		manipString[i] = ip[i];
+	}
 
-        manipString[count] = NULL;
+	manipString[count] = NULL;
 
-        return (manipString);
+	return (manipString);
 }
 
 /**
@@ -35,22 +35,22 @@ char **argDup(char **ip, char *newArg)
  */
 char *checkPerm(char **dirsWithSlash)
 {
-        int i = 0;
-        struct stat *buf;
-        buf = malloc (sizeof(struct stat));
-        while (dirsWithSlash[i] != NULL)
-        {
-                if(stat(dirsWithSlash[i], buf) == 0)
-                {
-                        if (access(dirsWithSlash[i], X_OK) == 0)
-                        {
-                                return (dirsWithSlash[i]);
+	int i = 0;
+	struct stat *buf;
 
-                        }
-                }
-                i++;
-        }
-        return(dirsWithSlash[i]);
+	buf = malloc(sizeof(struct stat));
+	while (dirsWithSlash[i] != NULL)
+	{
+		if (stat(dirsWithSlash[i], buf) == 0)
+		{
+			if (access(dirsWithSlash[i], X_OK) == 0)
+			{
+				return (dirsWithSlash[i]);
+			}
+		}
+		i++;
+	}
+	return (dirsWithSlash[i]);
 }
 
 /**
@@ -60,40 +60,41 @@ char *checkPerm(char **dirsWithSlash)
  */
 char **command_concat(char *string1, char **dblArr)
 {
-        char **concatDArray;
-        char **slashPath;
-        char *temp;
-        char *temp2;
-        int i = 0, count = 0, j = 0;
-        for(i = 0; dblArr[i] != NULL; i++)
-        {
-                count++;
-        }
+	char **concatDArray;
+	char **slashPath;
+	char *temp;
+	char *temp2;
+	int i = 0, count = 0, j = 0;
 
-        slashPath = malloc(sizeof(char*) * (count + 1));
-        for (i = 0; dblArr[i] != NULL; i++)
-        {
-                temp2 = _strdup(dblArr[i]);
-                slashPath[i] = _strcat(temp2, "/");
-        }
+	for (i = 0; dblArr[i] != NULL; i++)
+	{
+		count++;
+	}
 
-        concatDArray = malloc(sizeof(char *) * (count + 1));
-        for(j = 0; dblArr[j] != NULL; j++)
-        {
-                temp2 = _strdup(dblArr[j]);
-                slashPath[j] = _strcat(temp2, "/");
-        }
+	slashPath = malloc(sizeof(char *) * (count + 1));
+	for (i = 0; dblArr[i] != NULL; i++)
+	{
+		temp2 = _strdup(dblArr[i]);
+		slashPath[i] = _strcat(temp2, "/");
+	}
 
-        concatDArray = malloc(sizeof(char *) * (count + 1));
-        for(j = 0; dblArr[j] != NULL; j++)
-        {
-                temp = _strdup(slashPath[j]);
-                concatDArray[j] = _strcat(temp, string1);
+	concatDArray = malloc(sizeof(char *) * (count + 1));
+	for (j = 0; dblArr[j] != NULL; j++)
+	{
+		temp2 = _strdup(dblArr[j]);
+		slashPath[j] = _strcat(temp2, "/");
+	}
 
-        }
-        concatDArray[count] = NULL;
+	concatDArray = malloc(sizeof(char *) * (count + 1));
+	for (j = 0; dblArr[j] != NULL; j++)
+	{
+		temp = _strdup(slashPath[j]);
+		concatDArray[j] = _strcat(temp, string1);
 
-	return(concatDArray);
+	}
+	concatDArray[count] = NULL;
+
+	return (concatDArray);
 }
 
 /**
@@ -103,20 +104,21 @@ char **command_concat(char *string1, char **dblArr)
  */
 char **DArrDup(char **src)
 {
-        int i, count = 0;
-        char **dest;
-        for (i = 0; src[i] != NULL; i++)
-        {
-                count++;
-        }
-        dest = malloc(sizeof(char *) * (count + 1));
-        for (i = 0; src[i] != NULL; i++)
-        {
-                dest[i] = _strdup(src[i]);
-        }
-        dest[count] = NULL;
+	int i, count = 0;
+	char **dest;
 
-        return (dest);
+	for (i = 0; src[i] != NULL; i++)
+	{
+		count++;
+	}
+	dest = malloc(sizeof(char *) * (count + 1));
+	for (i = 0; src[i] != NULL; i++)
+	{
+		dest[i] = _strdup(src[i]);
+	}
+	dest[count] = NULL;
+
+	return (dest);
 }
 
 /**
@@ -126,28 +128,28 @@ char **DArrDup(char **src)
  */
 char **tokenizePath(char *inPath)
 {
-        int i = 0, count;
-        char *token;
-        char **outArr;
-        char *copy_src = _strdup(inPath);
+	int i = 0, count;
+	char *token;
+	char **outArr;
+	char *copy_src = _strdup(inPath);
 
-        token = strtok(copy_src, ":");
-        while (token != NULL)
-        {
-                token = strtok(NULL, ":");
-                count++;
-        }
+	token = strtok(copy_src, ":");
+	while (token != NULL)
+	{
+		token = strtok(NULL, ":");
+		count++;
+	}
 
-        outArr = malloc(sizeof(char *) * (count + 1));
-        token = strtok(inPath, ":");
-        while(token != NULL)
-        {
-                outArr[i] = token;
-                token = strtok(NULL, ":");
-                i++;
-        }
+	outArr = malloc(sizeof(char *) * (count + 1));
+	token = strtok(inPath, ":");
+	while (token != NULL)
+	{
+		outArr[i] = token;
+		token = strtok(NULL, ":");
+		i++;
+	}
 
-        outArr[count] = NULL;
-        return (outArr);
+	outArr[count] = NULL;
+	return (outArr);
 }
 
