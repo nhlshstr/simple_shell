@@ -22,12 +22,16 @@ int main(int argc, char **argv, char **env)
 				_printR("[(xshell$)] ");
 			check = getline(&src, &src_size, stdin);
 			src = strtok(src, "#");
-			src = newLine(src);
+			if (check == EOF && (isatty(STDIN_FILENO) == 0))
+			{
+				exit(EXIT_SUCCESS);
+			}
 			if (check == EOF)
 			{
 				_putchar('\n');
 				exit(EXIT_SUCCESS);
 			}
+			src = newLine(src);
 			if (check == 1)
 				continue;
 			arr = _tokenize(src);
