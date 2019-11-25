@@ -73,15 +73,15 @@ char **command_concat(char *string1, char **dblArr)
         slashPath = malloc(sizeof(char*) * (count + 1));
         for (i = 0; dblArr[i] != NULL; i++)
         {
-                temp2 = strdup(dblArr[i]);
+                temp2 = _strdup(dblArr[i]);
                 slashPath[i] = _strcat(temp2, "/");
         }
 
         concatDArray = malloc(sizeof(char *) * (count + 1));
         for(j = 0; dblArr[j] != NULL; j++)
         {
-                temp2 = strdup(dblArr[i]);
-                slashPath[i] = _strcat(temp2, "/");
+                temp2 = _strdup(dblArr[j]);
+                slashPath[j] = _strcat(temp2, "/");
         }
 
         concatDArray = malloc(sizeof(char *) * (count + 1));
