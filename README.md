@@ -37,8 +37,7 @@ $
 ```
 ## Project restrictions
 
-This is the list of allowed functions and system calls for the making of this pro\
-ject.
+This is the list of allowed functions and system calls for the making of this project.
 
 ```
 access (man 2 access)
