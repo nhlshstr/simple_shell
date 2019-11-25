@@ -1,15 +1,17 @@
 # Simple Shell
+A functional shell that works the same as the sh. This Simple Shell will work in both interactive and non-interactive mode.
 
-Write a functinal shell that works the same as the sh. This Simple Shell will work in both interactive and non-interactive mode.
+## Getting Started
+The project was written in C programming language. When compiled, it will function as the shell terminal.
 
-# Compilation and Implentation
+**Compilation and Implementation
+
 After you have cloned this Repo you will compile, using the following flags:
 ```
 gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 ```
 
-# Examples
-
+## Testing
 After the Shell is compiled it should work like this in interactive mode:
 ```
 $ ./hsh
@@ -33,7 +35,10 @@ hsh main.c shell.c test_ls_2
 hsh main.c shell.c test_ls_2
 $
 ```
-# In the making of this Program, this is the list of allowed functions and system calls
+## Project restrictions
+
+This is the list of allowed functions and system calls for the making of this pro\
+ject.
 
 ```
 access (man 2 access)
@@ -67,3 +72,6 @@ _exit (man 2 _exit)
 isatty (man 3 isatty)
 fflush (man 3 fflush)
 ```
+## Authors
+Nehal Shastri
+Raudo Rivas
