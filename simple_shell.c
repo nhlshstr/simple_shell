@@ -84,13 +84,20 @@ void getDirs(char **input, char **Env)
 	char **tokenArr;
 	char **concatArg;
 	char **newArg;
-
-	if (access(input[0], X_OK) == 0)
+	if (input[0][0] == '/')
 	{
-		if (functionExecute(input) != 0)
-			exit(EXIT_FAILURE);
-	}
+		if (access(input[0], X_OK) == 0)
 
+		{
+			if (functionExecute(input) != 0)
+				exit(EXIT_FAILURE);
+		}
+		else
+		{
+			_printR(input[0]);
+			_printR(": No such file or direcotory\n");
+		}
+	}
 	else
 	{
 		pathofpath = getPath(Env);
@@ -116,17 +123,10 @@ void getDirs(char **input, char **Env)
 int functionExecute(char **input)
 {
 	int status1;
-	int checker = 0;
 
 	if (fork() == 0)
 	{
-		checker = execve(input[0], input, NULL);
-			if (checker == -1)
-			{
-				_printR(input[0]);
-				perror(": No such file or direcotory\n");
-				exit(EXIT_FAILURE);
-			}
+		execve(input[0], input, NULL);
 	}
 
 	else
@@ -158,7 +158,6 @@ int functionExecute1(char **input, char **tokenized, char **concatedArgu)
 			{
 				_printR(input[0]);
 				write(STDERR_FILENO, ": No such file or directory\n", 28);
-				exit(EXIT_FAILURE);
 			}
 	}
 
