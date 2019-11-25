@@ -172,9 +172,9 @@ int functionExecute1(char **input/*, char **tokenized, char **concatedArgu, char
 	else
 	{
 		wait (&status1);
-	//	free (tokenized);
-	//	free (concatedArgu);
-	//	free (newestArg);
+	/*	free (tokenized);
+		free (concatedArgu);
+		free (newestArg); */
 	}
 	
 	return (0);
