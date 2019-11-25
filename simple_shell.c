@@ -133,8 +133,13 @@ int functionExecute(char **input)
 	return (0);
 }
 /**
+ *functionExecute1 - executes the function passed to it
  *
+ * @input: Input string
+ * @tokenized: Tokenized double array to be freed
+ * @concatedArgu - concated arguments to be freed
  *
+ * Return: 0 on success.
  */
 
 int functionExecute1(char **input, char **tokenized, char **concatedArgu)
