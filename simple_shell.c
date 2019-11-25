@@ -94,8 +94,8 @@ void getDirs(char **input, char **Env)
 		}
 		else
 		{
-			_printR(input[0]);
-			_printR(": No such file or direcotory\n");
+			_printR("./hsh");
+			_printR(": No such file or directory\n");
 		}
 	}
 	else
