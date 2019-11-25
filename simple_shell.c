@@ -20,6 +20,7 @@ int main(int argc, char **argv, char **env)
 			if (isatty(STDIN_FILENO))
 				_printR("[(xshell$)] ");
 			check = getline(&src, &src_size, stdin);
+			src = strtok(src, "#");
 			src = newLine(src);
 			if (check == EOF)
 			{
