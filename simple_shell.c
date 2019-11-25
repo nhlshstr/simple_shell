@@ -113,7 +113,7 @@ void getDirs(char **input, char **Env)
 		convertedInput = checkPerm(concatArg);
 		newArg = argDup(input, convertedInput);
 
-		if (functionExecute1(newArg/*, tokenArr, concatArg, newArg*/) != 0)
+		if (functionExecute1(newArg, tokenArr, concatArg, newArg) != 0)
 		{
 			exit(EXIT_FAILURE);
 		}
@@ -154,7 +154,7 @@ int functionExecute(char **input)
  *
  */
 
-int functionExecute1(char **input)
+int functionExecute1(char **input, char **tokenized, char **concatedArgu, char **newestArg)
 {
 	int status1;
 	int checker = 0;
@@ -173,9 +173,9 @@ int functionExecute1(char **input)
 	else
 	{
 		wait(&status1);
-		/**	free (tokenized);
-		 *	free (concatedArgu);
-		 *	free (newestArg); */
+			free (tokenized);
+			free (concatedArgu);
+			free (newestArg);
 	}
 	return (0);
 }
