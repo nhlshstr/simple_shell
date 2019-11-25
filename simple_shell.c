@@ -1,9 +1,10 @@
 #include "holberton.h"
 /**
- *main - Driver function for UNIX interpreter
- *
- *
- *Return: Returns (0) if successful, otherwise accoridng error.
+ * main - Driver function for UNIX interpreter
+ * @argc: void
+ * @argv: void
+ * @env: environment
+ * Return: Returns (0) if successful, otherwise accoridng error.
  */
 int main(int argc, char **argv, char **env)
 {

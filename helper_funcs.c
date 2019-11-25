@@ -1,10 +1,8 @@
 #include "holberton.h"
 /**
- *argDup - duplicates the arguments
- *
+ * argDup - duplicates the arguments
  * @ip: input string
  * @newArg: new argument
- *
  * Return: Returns the manipulated string
  */
 char **argDup(char **ip, char *newArg)
@@ -30,10 +28,8 @@ char **argDup(char **ip, char *newArg)
 }
 
 /**
- *checkPerm - check's the existence of a file
- *
- *@dirsWithSlash: Pointers to strings of directory with appropriate slashes
- *
+ * checkPerm - check's the existence of a file
+ * @dirsWithSlash: Pointers to strings of directory with appropriate slashes
  * Return: Integer to indicate success or failure
  */
 char *checkPerm(char **dirsWithSlash)
@@ -57,9 +53,10 @@ char *checkPerm(char **dirsWithSlash)
 }
 
 /**
- *
- *
- *
+ * command_concat - function to concatenate
+ * @string1: string
+ * @dblArr: array
+ * Return: cocatenated string
  */
 char **command_concat(char *string1, char **dblArr)
 {
@@ -101,9 +98,9 @@ char **command_concat(char *string1, char **dblArr)
 }
 
 /**
- *
- *
- *
+ * DArrDup - duplicate array
+ * @src: source string
+ * Return: destination
  */
 char **DArrDup(char **src)
 {
@@ -125,9 +122,9 @@ char **DArrDup(char **src)
 }
 
 /**
- *
- *
- *
+ * tokenizePath - function that tokenizes the PATH
+ * @inPath: PATH
+ * Return: tokenized string
  */
 char **tokenizePath(char *inPath)
 {
