@@ -72,6 +72,7 @@ char *_strcat(char *dest, char *src)
 char *_strcat66(char *dest, char *src)
 {
 	int i, j;
+
 	dest = "/";
 	for (i = 0; dest[i] != '\0'; i++)
 	{
