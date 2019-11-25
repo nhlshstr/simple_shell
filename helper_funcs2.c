@@ -20,7 +20,8 @@ void checkBuiltIn(char **array, char **ENN)
 }
 
 /**
- * @printenv:
+ * printenv - prints the environment passed
+ * @ENNV: environment passed
  * Return: void
  */
 void printenv(char **ENNV)
