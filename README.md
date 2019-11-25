@@ -1,8 +1,39 @@
 # Simple Shell
 
-Write a functinal shell that works the same as the sh.
+Write a functinal shell that works the same as the sh. This Simple Shell will work in both interactive and non-interactive mode.
 
-# List of allowed functions and system calls
+# Compilation and Implentation
+After you have cloned this Repo you will compile, using the following flags:
+```
+gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
+```
+
+# Examples
+
+After the Shell is compiled it should work like this in interactive mode:
+```
+$ ./hsh
+($) /bin/ls
+hsh main.c shell.c
+($)
+($) exit
+$
+```
+And also in non-interactive mode:
+```
+$ echo "/bin/ls" | ./hsh
+hsh main.c shell.c test_ls_2
+$
+$ cat test_ls_2
+/bin/ls
+/bin/ls
+$
+$ cat test_ls_2 | ./hsh
+hsh main.c shell.c test_ls_2
+hsh main.c shell.c test_ls_2
+$
+```
+# In the making of this Program, this is the list of allowed functions and system calls
 
 ```
 access (man 2 access)
@@ -35,38 +66,4 @@ write (man 2 write)
 _exit (man 2 _exit)
 isatty (man 3 isatty)
 fflush (man 3 fflush)
-```
-
-# Testing
-
-The shell should work like this in interactive mode:
-```
-$ ./hsh
-($) /bin/ls
-hsh main.c shell.c
-($)
-($) exit
-$
-```
-And also in non-interactive mode:
-```
-$ echo "/bin/ls" | ./hsh
-hsh main.c shell.c test_ls_2
-$
-$ cat test_ls_2
-/bin/ls
-/bin/ls
-$
-$ cat test_ls_2 | ./hsh
-hsh main.c shell.c test_ls_2
-hsh main.c shell.c test_ls_2
-$
-```
-
-# Compilation
-
-Your shell will be compiled this way:
-
-```
-gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 ```
