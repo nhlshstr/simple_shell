@@ -34,3 +34,43 @@ void printenv(char **ENNV)
 			_putchar('\n');
 		}
 }
+/**
+ * newLine - converts encountered new line into NULL byte
+ *
+ * @src: String that is passed
+ *
+ * Return: String with null termination
+ */
+char *newLine(char *src)
+{
+	int j = 0;
+
+	for (j = 0; src[j] != '\0'; ++j)
+	{
+		if (src[j] == '\n' || src[j + 1] == '\0')
+			src[j] = '\0';
+	}
+	return (src);
+}
+/**
+ * getPath - function to get the path of PATH
+ *
+ * @envi: Pointer to environment variables
+ *
+ * Return: Path of path on success (Always success as PATH always exists)
+ */
+char *getPath(char **envi)
+{
+	int i, compcheck = 0;
+
+	for (i = 0; envi[i] != NULL; i++)
+	{
+		compcheck = _strcmp("PATH", strtok(envi[i], "="));
+		if (compcheck == 0)
+		{
+			break;
+		}
+	}
+
+	return (strtok(NULL, "\0"));
+}
