@@ -1,10 +1,8 @@
 #include "holberton.h"
 /**
  *checkBuiltIn - checks for the built in functions
- *
  * @array: Double array of pointers to i/p strings
  * @ENN: Pointer to pointers of environment variables
- *
  * Return: Returns nothing
  */
 void checkBuiltIn(char **array, char **ENN)
@@ -17,13 +15,13 @@ void checkBuiltIn(char **array, char **ENN)
 
 	if (_strcmp(array[0], "env") == 0)
 	{
-			printenv(ENN);
+		printenv(ENN);
 	}
 }
+
 /**
- *
- *
- *
+ * @printenv:
+ * Return: void
  */
 void printenv(char **ENNV)
 {
@@ -31,7 +29,7 @@ void printenv(char **ENNV)
 
 		for (i = 0; ENNV[i] != NULL; i++)
 		{
-				_printR(ENNV[i]);
-				_putchar('\n');
+			_printR(ENNV[i]);
+			_putchar('\n');
 		}
 }
