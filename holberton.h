@@ -1,6 +1,6 @@
 #ifndef HOLBSHELL
 #define HOLBSHELL
-
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -26,7 +26,9 @@ char *inputConverter(char *inputStr);
 char *checkPerm(char **dirsWithSlash);
 char **argDup(char **ip, char *newArg);
 char **DArrDup(char **src);
-int functionExecute1(char **input, char **tokenized, char **concatedArgu, char **newestArg);
+int functionExecute1(char **input/*, char **tokenized, char **concatedArgu, char **newestArg*/);
 int functionExecute(char **input);
 int _env(int argc, char **argv, char** envp);
+void checkBuiltIn(char **array, char **ENN);
+void printenv(char **ENNV);
 #endif

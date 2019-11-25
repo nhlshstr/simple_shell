@@ -30,6 +30,7 @@ int main(int argc, char **argv, char **env)
 			if (check == 1)
 					continue;
 			arr = _tokenize(src);
+			checkBuiltIn(arr, env);
 			env66 = DArrDup(env);
 			getDirs(arr, env66);
 			free(env66);	
@@ -106,13 +107,13 @@ void getDirs(char **input, char **Env)
 
 	else
 	{
-		pathofpath = getPath(Env);	
-		tokenArr = tokenizePath(pathofpath);//MUST FREE DOUBLE ARRAY RETURNED
-		concatArg = command_concat(input[0], tokenArr);//MUST FREE DOUBLE ARRAY RETURNED
+		pathofpath = getPath(Env);
+		tokenArr = tokenizePath(pathofpath);
+		concatArg = command_concat(input[0], tokenArr);
 		convertedInput = checkPerm(concatArg);
-		newArg = argDup(input, convertedInput);//MUST FREE DA RETURNED
+		newArg = argDup(input, convertedInput);
 	
-		if(functionExecute1(newArg, tokenArr, concatArg, newArg) != 0)
+		if(functionExecute1(newArg/*, tokenArr, concatArg, newArg*/) != 0)
 		{
 			exit(EXIT_FAILURE);
 		}
@@ -134,9 +135,9 @@ int functionExecute(char **input)
 	{
 		checker = execve(input[0], input, NULL);
 			if (checker == -1)
-			{
+			{	printf("ERROR\n\n");
 				_printR(input[0]);
-				write(STDERR_FILENO, ": No such file or direcotory\n", 28);
+				perror(": No such file or direcotory\n");
 				exit (EXIT_FAILURE);
 			}
 	}
@@ -153,7 +154,7 @@ int functionExecute(char **input)
  *
  */
 
-int functionExecute1(char **input, char **tokenized, char **concatedArgu, char **newestArg)
+int functionExecute1(char **input/*, char **tokenized, char **concatedArgu, char **newestArg*/)
 {	
 	int status1;
 	int checker = 0;
@@ -171,9 +172,9 @@ int functionExecute1(char **input, char **tokenized, char **concatedArgu, char *
 	else
 	{
 		wait (&status1);
-		free (tokenized);
-		free (concatedArgu);
-		free (newestArg);
+	//	free (tokenized);
+	//	free (concatedArgu);
+	//	free (newestArg);
 	}
 	
 	return (0);
