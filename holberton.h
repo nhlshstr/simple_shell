@@ -28,7 +28,7 @@ char **argDup(char **ip, char *newArg);
 char **DArrDup(char **src);
 int functionExecute1(char **input, char **tokenized, char **concatedArgu);
 int functionExecute(char **input);
-int _env(int argc, char **argv, char** envp);
+int _env(int argc, char **argv, char **envp);
 void checkBuiltIn(char **array, char **ENN);
 void printenv(char **ENNV);
 #endif
