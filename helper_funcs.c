@@ -1,8 +1,11 @@
 #include "holberton.h"
 /**
+ *argDup - duplicates the arguments
  *
+ * @ip: input string
+ * @newArg: new argument
  *
- *
+ * Return: Returns the manipulated string
  */
 char **argDup(char **ip, char *newArg)
 {
