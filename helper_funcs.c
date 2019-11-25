@@ -81,13 +81,6 @@ char **command_concat(char *string1, char **dblArr)
 	concatDArray = malloc(sizeof(char *) * (count + 1));
 	for (j = 0; dblArr[j] != NULL; j++)
 	{
-		temp2 = _strdup(dblArr[j]);
-		slashPath[j] = _strcat(temp2, "/");
-	}
-
-	concatDArray = malloc(sizeof(char *) * (count + 1));
-	for (j = 0; dblArr[j] != NULL; j++)
-	{
 		temp = _strdup(slashPath[j]);
 		concatDArray[j] = _strcat(temp, string1);
 

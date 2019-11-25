@@ -166,7 +166,7 @@ int functionExecute1(char **input, char **tokenized, char **concatedArgu)
 			if (checker == -1)
 			{
 				_printR(input[0]);
-				write(STDERR_FILENO, ": No such file or direcotory\n", 28);
+				write(STDERR_FILENO, ": No such file or directory\n", 28);
 				exit(EXIT_FAILURE);
 			}
 	}
