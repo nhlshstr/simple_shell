@@ -25,7 +25,7 @@ int main(int argc, char **argv, char **env)
 			src = newLine(src);
 			if (check == EOF)
 			{
-				printf("\n");
+				_putchar('\n');
 				exit(EXIT_SUCCESS);
 			}
 			if (check == 1)
@@ -113,7 +113,7 @@ void getDirs(char **input, char **Env)
 		convertedInput = checkPerm(concatArg);
 		newArg = argDup(input, convertedInput);
 
-		if (functionExecute1(newArg, tokenArr, concatArg, newArg) != 0)
+		if (functionExecute1(newArg, tokenArr, concatArg) != 0)
 		{
 			exit(EXIT_FAILURE);
 		}
@@ -136,7 +136,7 @@ int functionExecute(char **input)
 	{
 		checker = execve(input[0], input, NULL);
 			if (checker == -1)
-			{	printf("ERROR\n\n");
+			{
 				_printR(input[0]);
 				perror(": No such file or direcotory\n");
 				exit(EXIT_FAILURE);
@@ -146,6 +146,7 @@ int functionExecute(char **input)
 	else
 	{
 		wait(&status1);
+				free(input);
 	}
 	return (0);
 }
@@ -154,7 +155,7 @@ int functionExecute(char **input)
  *
  */
 
-int functionExecute1(char **input, char **tokenized, char **concatedArgu, char **newestArg)
+int functionExecute1(char **input, char **tokenized, char **concatedArgu)
 {
 	int status1;
 	int checker = 0;
@@ -175,7 +176,7 @@ int functionExecute1(char **input, char **tokenized, char **concatedArgu, char *
 		wait(&status1);
 			free (tokenized);
 			free (concatedArgu);
-			free (newestArg);
+			free (input);
 	}
 	return (0);
 }
