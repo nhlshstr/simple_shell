@@ -4,7 +4,7 @@ A functional shell that works the same as the sh. This Simple Shell will work in
 ## Getting Started
 The project was written in C programming language. When compiled, it will function as the shell terminal.
 
-**Compilation and Implementation
+**Compilation and Implementation**
 
 After you have cloned this Repo you will compile, using the following flags:
 ```
@@ -73,5 +73,4 @@ isatty (man 3 isatty)
 fflush (man 3 fflush)
 ```
 ## Authors
-Nehal Shastri
-Raudo Rivas
+Nehal Shastri, Raudo Rivas
