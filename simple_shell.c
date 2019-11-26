@@ -1,5 +1,5 @@
-#include "holberton.h"
-/**
+#include "holberton.h" 
+/** 
  * main - Driver function for UNIX interpreter
  * @argc: void
  * @argv: void
@@ -152,11 +152,10 @@ int functionExecute(char **input)
 int functionExecute1(char **input)
 {
 	int status1;
-	int checker = 0;
 
 	if (fork() == 0)
 	{
-		checker = execve(input[0], input, NULL);
+		execve(input[0], input, NULL);
 	}
 
 	else
