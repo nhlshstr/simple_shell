@@ -36,7 +36,11 @@ int main(int argc, char **argv, char **env)
 			if (check == 1)
 				continue;
 			arr = _tokenize(src);
-			checkBuiltIn(arr, env);
+			if (checkBuiltIn(arr, env) == 0)
+			{
+					fflush(stdin);
+					continue;
+			}
 			env66 = DArrDup(env);
 			getDirs(arr, env66);
 			free(env66);

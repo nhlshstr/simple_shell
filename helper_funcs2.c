@@ -5,8 +5,10 @@
  * @ENN: Pointer to pointers of environment variables
  * Return: Returns nothing
  */
-void checkBuiltIn(char **array, char **ENN)
-{
+int checkBuiltIn(char **array, char **ENN)
+{	
+	int a = 0;
+	
 	if (_strcmp("exit", array[0]) == 0)
 	{
 		free(array);
@@ -15,8 +17,10 @@ void checkBuiltIn(char **array, char **ENN)
 
 	if (_strcmp(array[0], "env") == 0)
 	{
-		printenv(ENN);
+		a = printenv(ENN);
 	}
+	
+	return (a);
 }
 
 /**
@@ -24,7 +28,7 @@ void checkBuiltIn(char **array, char **ENN)
  * @ENNV: environment passed
  * Return: void
  */
-void printenv(char **ENNV)
+int printenv(char **ENNV)
 {
 		int i = 0;
 
@@ -33,6 +37,8 @@ void printenv(char **ENNV)
 			_printR(ENNV[i]);
 			_putchar('\n');
 		}
+
+		return (0);
 }
 /**
  * newLine - converts encountered new line into NULL byte

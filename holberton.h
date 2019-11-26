@@ -30,7 +30,7 @@ char **DArrDup(char **src);
 int functionExecute1(char **input);
 int functionExecute(char **input);
 int _env(int argc, char **argv, char **envp);
-void checkBuiltIn(char **array, char **ENN);
-void printenv(char **ENNV);
+int checkBuiltIn(char **array, char **ENN);
+int printenv(char **ENNV);
 void _freeArr(char **doubleArray);
 #endif
