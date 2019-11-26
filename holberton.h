@@ -9,6 +9,7 @@
 #include <sys/wait.h>
 #include <signal.h>
 #include <sys/stat.h>
+sighandler_t ignore;
 char *_strdup(char *str);
 char **_tokenize(char *str);
 int _putchar(char c);

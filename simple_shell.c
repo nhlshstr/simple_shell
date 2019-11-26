@@ -17,7 +17,8 @@ int main(int argc, char **argv, char **env)
 		(void)argv;
 
 		while (check != -1)
-		{
+		{	
+			signal(SIGINT, SIG_IGN);
 			if (isatty(STDIN_FILENO))
 				_printR("[(xshell$)] ");
 			check = getline(&src, &src_size, stdin);
