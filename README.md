@@ -36,9 +36,11 @@ hsh main.c shell.c test_ls_2
 $
 ```
 ## Requirements
--No more than 5 functions per file
--Allowed editors: vi, vim, emacs
--All your files will be compiled on Ubuntu 14.04 LTS
+No more than 5 functions per file
+
+Allowed editors: vi, vim, emacs
+
+All your files will be compiled on Ubuntu 14.04 LTS
 ## Project restrictions
 
 This is the list of allowed functions and system calls for the making of this project.
