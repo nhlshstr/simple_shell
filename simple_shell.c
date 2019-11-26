@@ -38,7 +38,6 @@ int main(int argc, char **argv, char **env)
 			arr = _tokenize(src);
 			if (checkBuiltIn(arr, env) == 0)
 			{
-					fflush(stdin);
 					continue;
 			}
 			env66 = DArrDup(env);
