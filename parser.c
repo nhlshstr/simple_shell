@@ -42,3 +42,19 @@ char **_tokenize(char *str)
 		return (&store[0]);
 }
 
+/**
+ *_freeArr - Frees individual arrays in a double array
+ *
+ * @doubleArray: Double array passed to free
+ *
+ * Return: No return
+ */
+void _freeArr(char **doubleArray)
+{
+	int i = 0;
+
+	for (i = 0; doubleArray[i] != NULL; i++)
+	{
+		free(doubleArray[i]);
+	}
+}
