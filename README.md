@@ -71,5 +71,8 @@ _exit (man 2 _exit)
 isatty (man 3 isatty)
 fflush (man 3 fflush)
 ```
+## Program flowchart
+![alt text](https://github.com/nhlshstr/simple_shell/blob/master/Simple_Shell%20%20(1).png)
+
 ## Authors
 Nehal Shastri, Raudo Rivas
