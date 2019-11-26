@@ -17,7 +17,7 @@ int main(int argc, char **argv, char **env)
 		(void)argv;
 
 		while (check != -1)
-		{	
+		{
 			signal(SIGINT, SIG_IGN);
 			if (isatty(STDIN_FILENO))
 				_printR("[(xshell$)] ");
@@ -86,6 +86,7 @@ void getDirs(char **input, char **Env)
 	char **tokenArr;
 	char **concatArg;
 	char **newArg;
+
 	if (input[0][0] == '/')
 	{
 		if (access(input[0], X_OK) == 0)
@@ -137,7 +138,7 @@ int functionExecute(char **input)
 	{
 		wait(&status1);
 	}
-	
+
 	return (0);
 }
 /**

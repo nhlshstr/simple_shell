@@ -51,7 +51,7 @@ char *checkPerm(char **dirsWithSlash)
 	}
 	_printR("./hsh");
 	_printR(": No such file or directory\n");
-	
+
 	return (NULL);
 }
 
