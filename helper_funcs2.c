@@ -18,9 +18,10 @@ int checkBuiltIn(char **array, char **ENN)
 	if (_strcmp(array[0], "env") == 0)
 	{
 		a = printenv(ENN);
+		return (a);
 	}
 	
-	return (a);
+	return (1);
 }
 
 /**
