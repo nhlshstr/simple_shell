@@ -144,8 +144,6 @@ int functionExecute(char **input)
  *functionExecute1 - executes the function passed to it
  *
  * @input: Input string
- * @tokenized: Tokenized double array to be freed
- * @concatedArgu: concated arguments to be freed
  *
  * Return: 0 on success.
  */
