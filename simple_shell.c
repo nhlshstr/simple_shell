@@ -158,11 +158,6 @@ int functionExecute1(char **input)
 	if (fork() == 0)
 	{
 		checker = execve(input[0], input, NULL);
-			if (checker == -1)
-			{
-				_printR(input[0]);
-				write(STDERR_FILENO, ": No such file or directory\n", 28);
-			}
 	}
 
 	else
@@ -171,18 +166,4 @@ int functionExecute1(char **input)
 	}
 	return (0);
 }
-/**
- *_freeArr: Frees individual arrays in a double array
- *
- * @doubleArray: Double array passed to free
- *
- * Return: No return
- */
-void _freeArr(char **doubleArray)
-{	
-	int i = 0;
-	for (i = 0; doubleArray[i] != NULL; i++)
-	{
-		free(doubleArray[i]);
-	}
-}
+
