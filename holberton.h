@@ -31,4 +31,5 @@ int functionExecute(char **input);
 int _env(int argc, char **argv, char **envp);
 void checkBuiltIn(char **array, char **ENN);
 void printenv(char **ENNV);
+void _freeArr(char **doubleArray);
 #endif

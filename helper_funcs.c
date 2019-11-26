@@ -86,7 +86,9 @@ char **command_concat(char *string1, char **dblArr)
 
 	}
 	concatDArray[count] = NULL;
-
+	free(slashPath);
+	free(temp2);
+	free(temp);
 	return (concatDArray);
 }
 
@@ -98,7 +100,7 @@ char **command_concat(char *string1, char **dblArr)
 char **DArrDup(char **src)
 {
 	int i, count = 0;
-	char **dest;
+	char **dest = NULL;
 
 	for (i = 0; src[i] != NULL; i++)
 	{

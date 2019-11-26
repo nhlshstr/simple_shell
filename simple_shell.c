@@ -40,6 +40,7 @@ int main(int argc, char **argv, char **env)
 			getDirs(arr, env66);
 			free(env66);
 			free(arr);
+			fflush(stdin);
 		}
 
 	return (0);
@@ -168,4 +169,19 @@ int functionExecute1(char **input)
 		wait(&status1);
 	}
 	return (0);
+}
+/**
+ *_freeArr: Frees individual arrays in a double array
+ *
+ * @doubleArray: Double array passed to free
+ *
+ * Return: No return
+ */
+void _freeArr(char **doubleArray)
+{	
+	int i = 0;
+	for (i = 0; doubleArray[i] != NULL; i++)
+	{
+		free(doubleArray[i]);
+	}
 }
