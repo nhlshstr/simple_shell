@@ -84,4 +84,4 @@ fflush (man 3 fflush)
 ![alt text](https://github.com/nhlshstr/simple_shell/blob/master/Simple_Shell%20%20(1).png)
 
 ## Authors
-Nehal Shastri, Raudo Rivas
+Maureen Chepngeno, Fredrick Owiti 
